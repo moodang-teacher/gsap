@@ -48,6 +48,7 @@ $(function () {
       x: -50,
       autoAlpha: 0,
       duration: 1,
+      onComplete: () => Splitting(),
     },
     '-=0.8'
   );
@@ -58,6 +59,7 @@ $(function () {
     ease: 'elastic.out(1, 0.3)',
     onComplete: () => {
       $('.small-bruce-lee').addClass('action');
+      moving();
     },
   });
 
@@ -68,6 +70,7 @@ $(function () {
   $('.logo').on('click', () => {
     TL.seek('end');
     $('.small-bruce-lee').addClass('action');
+    moving();
   });
 
   // 괴조음
@@ -75,4 +78,40 @@ $(function () {
 
   // 작은 이소룡을 클릭하면 괴조음 플레이
   $('.small-bruce-lee').on('click', () => screamSound.play());
-});
+
+  // 이소룡 움직이기
+  const $window = $(window);
+  let x = 0;
+  let y = 0;
+  let mx = 0;
+  let my = 0;
+  const speed = 0.09;
+
+  // 마우스가 움직이면 좌표값을 구한다.
+  $window.on('mousemove', (e) => {
+    console.log(e);
+    x = e.pageX - $window.innerWidth() / 2;
+    // y = e.pageY - $window.innerHeight() / 2;
+  });
+
+  // 대상(이소룡)을 움직이게 하는 함수
+  function moving() {
+    mx += (x - mx) * speed;
+    // my += (y - my) * speed;
+
+    $('.bruce-lee').css({
+      // transform: `translate(${mx}px, ${my}px)`,
+      transform: `translateX(${mx}px)`,
+    });
+
+    $('.bruce-lee-bg').css({
+      transform: `translateX(${mx * 0.4}px)`,
+    });
+
+    $('.title').css({
+      transform: `translate(${-mx * 0.4}px, -50%)`,
+    });
+
+    requestAnimationFrame(moving);
+  }
+}); // end : jQuery
