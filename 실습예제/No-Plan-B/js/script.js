@@ -89,23 +89,24 @@ $(function () {
 
   // 마우스가 움직이면 좌표값을 구한다.
   $window.on('mousemove', (e) => {
-    console.log(e);
-    x = e.pageX - $window.innerWidth() / 2;
-    // y = e.pageY - $window.innerHeight() / 2;
+    // Math.min(a, b) Math.max(a, b)
+
+    x = Math.max(-100, Math.min(200, e.pageX - $window.innerWidth() / 2));
+    y = Math.max(-10, Math.min(100, e.pageY - $window.innerHeight() / 2));
   });
 
   // 대상(이소룡)을 움직이게 하는 함수
   function moving() {
     mx += (x - mx) * speed;
-    // my += (y - my) * speed;
+    my += (y - my) * speed;
 
     $('.bruce-lee').css({
-      // transform: `translate(${mx}px, ${my}px)`,
       transform: `translateX(${mx}px)`,
+      filter: `blur(${mx * 0.05}px)`,
     });
 
     $('.bruce-lee-bg').css({
-      transform: `translateX(${mx * 0.4}px)`,
+      transform: `translate(${mx * 0.4}px, ${my}px)`,
     });
 
     $('.title').css({
