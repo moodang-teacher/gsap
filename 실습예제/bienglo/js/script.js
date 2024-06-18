@@ -129,6 +129,7 @@ $(function () {
       start: 'top 50%',
       toggleActions: 'play none reverse reverse',
       markers: true,
+      id: 'goTop',
       onEnter: () => console.log('Enter'),
       onLeave: () => console.log('Leave'),
       onEnterBack: () => console.log('EnterBack'),
