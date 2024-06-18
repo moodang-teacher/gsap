@@ -68,7 +68,7 @@ $(function () {
   // 이미지 애니메이션
   $('.about-con figure').each((index, frame) => {
     const image = $(frame).find('img');
-    console.log(image);
+    // console.log(image);
 
     // figure를 크게 만들기
     gsap.from(frame, {
@@ -128,7 +128,11 @@ $(function () {
       trigger: '.about-con',
       start: 'top 50%',
       toggleActions: 'play none reverse reverse',
-      // markers: true,
+      markers: true,
+      onEnter: () => console.log('Enter'),
+      onLeave: () => console.log('Leave'),
+      onEnterBack: () => console.log('EnterBack'),
+      onLeaveBack: () => console.log('LeaveBack'),
     },
   });
 });
