@@ -19,11 +19,20 @@ img {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
 body {
   font: 2rem Pretendard, sans-serif;
   height: 100vh;
   background: #000
-    url(https://altselection.com/wp-content/uploads/2024/05/Les-bunnies-de-NewJeans-annoncent-clairement-qui-ils-soutiennent-dans-la-bataille-dADOR-contre-HYBE-scaled.webp)
+    url(https://img.uhdpaper.com/wallpaper/newjeans-group-members-905@0@g)
     no-repeat 0 0 / cover;
   overflow: hidden;
 }
