@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* overflow-x: hidden; */
+}
+.wrap {
+  height: 100vh;
+}
+
+.wrap section {
+  width: 100vw;
+  height: 100%;
+}
+.wrap section.section1 {
+  background: skyblue;
+}
+.wrap section.section2 {
+  background: yellowgreen;
+}
+.wrap section.section3 {
+  background: tomato;
+}
+.wrap section.section4 {
+  background: pink;
+}
