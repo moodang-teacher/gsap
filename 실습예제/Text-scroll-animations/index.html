@@ -30,6 +30,10 @@
       dolore. Ad!</p>
   </section>
 
+  <section class="text">
+    <p>신라의 푸른 하늘 태극기 아래, 이 몸을 함께 바친 젊은 용사들</p>
+  </section>
+
   <section></section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -44,18 +48,50 @@
     splitTypes.forEach((char, i) => {
       const text = new SplitType(char, { types: 'chars' })
 
+      // console.log(text.chars); // Array of character elements
       gsap.from(text.chars, {
         scrollTrigger: {
           trigger: char,
           start: 'top 80%',
           end: 'top 20%',
           scrub: true,
-          markers: true,
+          // markers: true,
         },
         opacity: 0.2,
-        stagger: 0.1
+        stagger: 0.1, // 각 요소의 애니메이션 시작 시간 사이에 0.1초 간격
       })
-    })
+    });
+
+    // Animista와 함께 사용할 수?
+    const textAni = () => {
+      const myText = new SplitType('section.text p', { type: 'chars' });
+      console.log(myText.chars);
+
+      myText.chars.forEach((char, i) => {
+        char.style.animationDelay = i * 0.05 + 's';
+      });
+
+    }
+    document.querySelector('section.text p').addEventListener('click', textAni);
+
+    // with scrollTrigger
+    // gsap.from('.text', {
+    //   scrollTrigger: {
+    //     trigger: '.text',
+    //     start: 'top 60%',
+    //     end: 'top 0%',
+    //     markers: true,
+    //     onEnter: () => {
+    //       const myText = new SplitType('section.text p', { type: 'chars' });
+    //       console.log(myText.chars);
+
+    //       myText.chars.forEach((char, i) => {
+    //         char.style.animationDelay = i * 0.05 + 's';
+    //       });
+    //     }
+    //   }
+    // })
+
 
 
     const lenis = new Lenis();
